@@ -16,6 +16,12 @@ body
 </style>
 
 <script>
+String.prototype.linkify_tweet = function() {
+    var tweet = this.replace(/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig,"<a target='_blank' href='$1'>$1</a>");
+    tweet = tweet.replace(/(^|\s)@(\w+)/g, "$1<a target='_blank' href=\"http://www.twitter.com/$2\">@$2</a>");
+    return tweet.replace(/(^|\s)#(\w+)/g, "$1<a target='_blank' href=\"http://search.twitter.com/search?q=%23$2\">#$2</a>");
+};
+
 function search()
 {
     if(window.location.href.indexOf("user") > -1 || window.location.href.indexOf("search") > -1)

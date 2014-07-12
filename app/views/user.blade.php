@@ -43,12 +43,6 @@
         var twitterUsername = '{{ $data['username'] }}';
         var maxTweets = <?php echo (count($data['tweets']) == 0 ? 'true' : 'false'); ?>
 
-        String.prototype.linkify_tweet = function() {
-            var tweet = this.replace(/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig,"<a href='$1'>$1</a>");
-            tweet = tweet.replace(/(^|\s)@(\w+)/g, "$1<a target='_blank' href=\"http://www.twitter.com/$2\">@$2</a>");
-            return tweet.replace(/(^|\s)#(\w+)/g, "$1<a target='_blank' href=\"http://search.twitter.com/search?q=%23$2\">#$2</a>");
-        };
-
         function loadTweets(username, maxId)
         {
             $.get("./" + username + "/" + maxId, function(data)
