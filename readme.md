@@ -8,4 +8,4 @@ This is a simple application developed with the Laravel framework using the Twit
 3. Laravel Forge (https://forge.laravel.com)
 
 #### Preview
-View it live at http://104.131.128.231/TwitterLF/
+View it live at http://laravelus.com/TwitterLF/
