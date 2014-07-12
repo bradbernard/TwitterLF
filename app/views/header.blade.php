@@ -18,7 +18,15 @@ body
 <script>
 function search()
 {
-    var url = '../search/' + $("#searchBar").val();
+    if(window.location.href.indexOf("user") > -1 || window.location.href.indexOf("search") > -1)
+    {
+        var url = '../search/' + $("#searchBar").val();
+    }
+    else
+    {
+        var url = './search/' + $("#searchBar").val();
+    }
+
     window.location.href = url;
 }
 </script>
