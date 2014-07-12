@@ -16,6 +16,16 @@ Route::get('/', function()
         return View::make('home');
 });
 
+Route::get('user/{username}/{id}', function($username = null, $id = null)
+{
+    return $userTweets = Twitter::getUserTimeline(array('screen_name' => $username, 'count' => 20, 'exclude_replies' => true, 'max_id' => ($id - 1), 'format' => 'json'));
+});
+
+Route::get('search/{username}/{id}', function($username = null, $id = null)
+{
+    return $userTweets = Twitter::getUsersSearch(array('q' => $username, 'format' => 'json', 'page' => $id, 'count' => 20));
+});
+
 Route::get('user/{username?}', function($username = null)
 {
         if(!$username)
@@ -34,7 +44,6 @@ Route::get('user/{username?}', function($username = null)
         }
 
         $userTweets = Twitter::getUserTimeline(array('screen_name' => $username, 'count' => 20, 'exclude_replies' => true));
-        //dd($userTweets);
 
         if(!$userTweets)
         {
@@ -95,8 +104,7 @@ Route::get('search/{username?}', function($username = null)
             return "Invalid search. Go <a href='javascript:history.back()'>back</a> to where you were.";
         }
 
-        $search = Twitter::getUsersSearch(array("q" => $username));
-        //dd($search);
+        $search = Twitter::getUsersSearch(array("q" => $username, 'count' => 20));
 
         if(!$search)
         {
