@@ -33,7 +33,7 @@
             </div>
         @endforeach
 
-        @if (count($data['tweets']) < 20)
+        @if (count($data['tweets']) == 0)
             <div class='alert alert-info' role='alert' style='margin-top:15px;'><strong>Uh oh!</strong> You have reached the end of this users tweets.</div>
         @endif
     </div>
@@ -41,7 +41,7 @@
     <script type="text/javascript">
         var twitterMaxId = '{{ $maxId }}';
         var twitterUsername = '{{ $data['username'] }}';
-        var maxTweets = <?php echo (count($data['tweets']) < 20 ? 'true' : 'false'); ?>
+        var maxTweets = <?php echo (count($data['tweets']) == 0 ? 'true' : 'false'); ?>
 
         String.prototype.linkify_tweet = function() {
             var tweet = this.replace(/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig,"<a href='$1'>$1</a>");
