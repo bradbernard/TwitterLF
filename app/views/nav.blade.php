@@ -18,7 +18,7 @@
 	  <div class="form-group">
 	      <div class="input-group">
 		  <span class="input-group-addon">@</span>
-		  <input type="text" class="form-control" placeholder="Search for a user" id="searchBar">
+		  <input type="text" class="form-control" placeholder="Search for a user" id="searchBar" value="{{ isset($search) ? $search : '' }}" >
 	      </div>
 	  </div>
 	  <button onclick="search(); return false;" class="btn btn-warning">Search</button>

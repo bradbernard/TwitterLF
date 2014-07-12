@@ -9,7 +9,7 @@
 </head>
 <body>
 
-    @include('nav')
+    @include('nav', array('search' => $data['username']))
 
     <div class="container">
             <div class="media" style= "padding: 15px; padding-bottom: 10px;">
